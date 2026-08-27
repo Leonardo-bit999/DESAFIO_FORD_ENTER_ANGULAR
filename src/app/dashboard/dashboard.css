@@ -1,0 +1,23 @@
+.table-ford {
+    background-color: #003478 !important;
+}
+
+.data-value {
+    color: #00A699;
+    font-weight: bold;
+}
+
+.text-primary {
+    color: #003478 !important;
+}
+
+.card-header {
+    font-weight: 500;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.active-menu {
+    background-color: #e2e6ea !important;
+    color: #000 !important;
+    border-left: 4px solid #00A699;
+}

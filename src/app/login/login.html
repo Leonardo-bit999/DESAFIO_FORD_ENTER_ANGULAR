@@ -1,0 +1,49 @@
+<main class="container-fluid vh-100 p-0">
+  <div class="row g-0 h-100">
+    <figure
+      class="col-md-7 d-none d-md-flex align-items-center justify-content-center bg-white m-0">
+      <img src="img/ranger.png" alt="Ford Ranger" class="img-fluid" style="max-width: 85%" />
+    </figure>
+
+    <section class="col-md-5 d-flex align-items-center justify-content-center bg-light px-4">
+      <form id="loginForm" class="w-100" style="max-width: 380px">
+        <header class="text-center mb-5">
+          <img
+            src="img/ford.png"
+            alt="Logo Ford"
+            style="width: 140px"
+            class="mb-4 d-block mx-auto"/>
+          <h4 class="fw-bold color-primary m-0">Boas-vindas</h4>
+        </header>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text bg-white border-end-0 text-muted">
+            <i class="bi bi-person"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control border-start-0 ps-0"
+            id="usuario"
+            placeholder="Insira seu nome de usuário"
+            required/>
+        </div>
+
+        <div class="input-group mb-4">
+          <span class="input-group-text bg-white border-end-0 text-muted">
+            <i class="bi bi-lock"></i>
+          </span>
+          <input
+            type="password"
+            class="form-control border-start-0 ps-0"
+            id="senha"
+            placeholder="Insira sua senha"
+            required/>
+        </div>
+
+        <button type="submit" id="btnEntrar" class="btn btn-entrar w-100 fw-bold" disabled>
+          Entrar
+        </button>
+      </form>
+    </section>
+  </div>
+</main>

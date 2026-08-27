@@ -1,0 +1,46 @@
+.color-primary {
+    color: #00A699;
+}
+
+.input-group-text {
+    border-color: #ced4da;
+}
+
+.form-control {
+    border-color: #ced4da;
+}
+
+.form-control:focus {
+    border-color: #00A699;
+    box-shadow: none;
+    background-color: #fff;
+}
+
+.form-control:focus+.input-group-text,
+.input-group:focus-within .input-group-text {
+    border-color: #00A699;
+    color: #00A699 !important;
+}
+
+.btn-entrar {
+    background-color: #b0b0b0;
+    color: white;
+    border: none;
+}
+
+.btn-entrar:hover {
+    background-color: #00A699;
+    color: white;
+}
+
+.btn-entrar:disabled {
+    background-color: #d3d3d3;
+    color: #888888;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.custom-switch:checked {
+    background-color: #00A699;
+    border-color: #00A699;
+}

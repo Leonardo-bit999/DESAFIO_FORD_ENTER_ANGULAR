@@ -1,0 +1,28 @@
+.home {
+    background-image: url('/img/ranger.png');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.welcome-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.menu-item {
+    padding: 15px 20px;
+    color: #555;
+    font-weight: 500;
+}
+
+.active-menu {
+    background-color: #e2e6ea !important;
+    color: #000 !important;
+    border-left: 4px solid #00A699;
+}

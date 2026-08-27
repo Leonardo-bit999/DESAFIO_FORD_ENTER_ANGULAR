@@ -1,0 +1,119 @@
+<header class="container-fluid p-3 d-flex align-items-center">
+  <button
+    class="btn text-success border-0 p-0 m-2 me-3"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#menuLateral"
+  >
+    <i class="bi bi-list" style="font-size: 2rem"></i>
+  </button>
+  <h1 class="h2 text-primary fw-bold m-0 mx-auto">Dashboard FORD</h1>
+</header>
+
+<aside class="offcanvas offcanvas-start shadow" tabindex="-1" id="menuLateral" style="width: 280px">
+  <header class="offcanvas-header justify-content-center border-bottom pt-4 pb-3">
+    <img src="img/ford.png" alt="Ford Logo" style="width: 110px" />
+  </header>
+
+  <nav class="offcanvas-body p-0">
+    <div class="list-group list-group-flush mt-2">
+      <a routerLink="/home" class="list-group-item list-group-item-action menu-item">Home</a>
+      <a routerLink="/dashboard" class="list-group-item list-group-item-action menu-item active-menu"
+        >Dashboard</a
+      >
+    </div>
+  </nav>
+</aside>
+
+<main class="container mt-4">
+  <section class="row text-center g-3" aria-label="Resumo de dados do veículo">
+    <article class="col-md-3">
+      <div class="card shadow-sm h-100">
+        <header class="card-header bg-white text-muted small">Veículo</header>
+        <div class="card-body d-flex align-items-center">
+          <select class="form-select" id="veiculoSelect" aria-label="Selecione o veículo">
+            <option value="" selected disabled>Selecione...</option>
+          </select>
+        </div>
+      </div>
+    </article>
+
+    <article class="col-md-3">
+      <div class="card shadow-sm h-100">
+        <header class="card-header bg-white text-muted small">Total de Vendas</header>
+        <div class="card-body d-flex flex-column justify-content-center">
+          <p class="data-value mb-0 fs-3" id="totalVendas">--</p>
+          <small class="text-muted" style="font-size: 0.7rem">unid.</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="col-md-3">
+      <div class="card shadow-sm h-100">
+        <header class="card-header bg-white text-muted small">Conectados</header>
+        <div class="card-body d-flex flex-column justify-content-center">
+          <p class="data-value mb-0 fs-3" id="conectados">--</p>
+          <small class="text-muted" style="font-size: 0.7rem">unid.</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="col-md-3">
+      <div class="card shadow-sm h-100">
+        <header class="card-header bg-white text-muted small">Update Software</header>
+        <div class="card-body d-flex flex-column justify-content-center">
+          <p class="data-value mb-0 fs-3" id="updateSoftware">--</p>
+          <small class="text-muted" style="font-size: 0.7rem">unid.</small>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="row mt-5 mb-4" aria-label="Visualização do modelo selecionado">
+    <figure class="col-12 d-flex justify-content-center m-0">
+      <img
+        src="img/mustang.png"
+        id="carroImagem"
+        alt="Veículo Selecionado"
+        class="img-fluid"
+        style="max-height: 250px; display: none"
+      />
+    </figure>
+  </section>
+
+  <section class="row" aria-label="Tabela de telemetria">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center shadow-sm text-nowrap">
+          <thead class="table-ford text-white">
+            <tr>
+              <th>Código - Vin</th>
+              <th>Odômetro</th>
+              <th>Nível de Combustível</th>
+              <th>Status</th>
+              <th>Lat.</th>
+              <th>Long.</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaCorpo" class="bg-white">
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="buscaVin"
+                  placeholder="Ex: 2FRHDUYS2Y63NHD22454"
+                />
+              </td>
+              <td id="tbOdo">--</td>
+              <td id="tbCombustivel">--</td>
+              <td id="tbStatus">--</td>
+              <td id="tbLat">--</td>
+              <td id="tbLong">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

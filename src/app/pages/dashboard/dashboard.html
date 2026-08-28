@@ -1,31 +1,24 @@
-<header class="container-fluid p-3 d-flex align-items-center">
+<app-menu></app-menu>
+<header
+  class="container-fluid p-3 d-flex justify-content-between align-items-start bg-light border-bottom"
+>
   <button
-    class="btn text-success border-0 p-0 m-2 me-3"
+    class="btn text-success border-0 p-0 m-2"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#menuLateral"
+    aria-controls="menuLateral"
   >
-    <i class="bi bi-list" style="font-size: 2rem"></i>
+    <i class="bi bi-list fs-2"></i>
   </button>
-  <h1 class="h2 text-primary fw-bold m-0 mx-auto">Dashboard FORD</h1>
+
+  <button class="btn text-secondary border-0 p-0 m-2" id="btnLogout" title="Sair do Sistema">
+    <i class="bi bi-box-arrow-right fs-4"></i>
+  </button>
 </header>
 
-<aside class="offcanvas offcanvas-start shadow" tabindex="-1" id="menuLateral" style="width: 280px">
-  <header class="offcanvas-header justify-content-center border-bottom pt-4 pb-3">
-    <img src="img/ford.png" alt="Ford Logo" style="width: 110px" />
-  </header>
-
-  <nav class="offcanvas-body p-0">
-    <div class="list-group list-group-flush mt-2">
-      <a routerLink="/home" class="list-group-item list-group-item-action menu-item">Home</a>
-      <a routerLink="/dashboard" class="list-group-item list-group-item-action menu-item active-menu"
-        >Dashboard</a
-      >
-    </div>
-  </nav>
-</aside>
-
 <main class="container mt-4">
+  <h1 class="h2 text-primary fw-bold m-3 mx-auto text-center">Dashboard FORD</h1>
   <section class="row text-center g-3" aria-label="Resumo de dados do veículo">
     <article class="col-md-3">
       <div class="card shadow-sm h-100">

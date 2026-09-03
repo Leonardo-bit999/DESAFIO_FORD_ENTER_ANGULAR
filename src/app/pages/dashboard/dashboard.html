@@ -1,14 +1,18 @@
 <app-menu></app-menu>
 <main class="container mt-4">
   <h1 class="h2 text-primary fw-bold m-3 mx-auto text-center">Dashboard FORD</h1>
+  
   <section class="row text-center g-3" aria-label="Resumo de dados do veículo">
     
     <article class="col-md-3">
       <div class="card shadow-sm h-100">
         <header class="card-header bg-white text-muted small">Veículo</header>
         <div class="card-body d-flex align-items-center">
-          <select class="form-select" id="veiculoSelect" aria-label="Selecione o veículo">
-            <option value="" selected disabled>Selecione...</option>
+          <select class="form-select" (change)="selecionarVeiculo($event)">
+            <option value="null" selected disabled>Selecione...</option>
+            @for (v of veiculos; track v.id) {
+              <option [value]="v.id">{{ v.vehicle }}</option>
+            }
           </select>
         </div>
       </div>
@@ -18,7 +22,7 @@
       <div class="card shadow-sm h-100">
         <header class="card-header bg-white text-muted small">Total de Vendas</header>
         <div class="card-body d-flex flex-column justify-content-center">
-          <p class="data-value mb-0 fs-3" id="totalVendas">--</p>
+          <p class="data-value mb-0 fs-3">{{ veiculoSelecionado?.volumetotal || '--' }}</p>
           <small class="text-muted" style="font-size: 0.7rem">unid.</small>
         </div>
       </div>
@@ -28,7 +32,7 @@
       <div class="card shadow-sm h-100">
         <header class="card-header bg-white text-muted small">Conectados</header>
         <div class="card-body d-flex flex-column justify-content-center">
-          <p class="data-value mb-0 fs-3" id="conectados">--</p>
+          <p class="data-value mb-0 fs-3">{{ veiculoSelecionado?.connected || '--' }}</p>
           <small class="text-muted" style="font-size: 0.7rem">unid.</small>
         </div>
       </div>
@@ -38,21 +42,21 @@
       <div class="card shadow-sm h-100">
         <header class="card-header bg-white text-muted small">Update Software</header>
         <div class="card-body d-flex flex-column justify-content-center">
-          <p class="data-value mb-0 fs-3" id="updateSoftware">--</p>
+          <p class="data-value mb-0 fs-3">{{ veiculoSelecionado?.softwareUpdates || '--' }}</p>
           <small class="text-muted" style="font-size: 0.7rem">unid.</small>
         </div>
       </div>
     </article>
   </section>
 
-  <section class="row mt-5 mb-4" aria-label="Visualização do modelo selecionado">
-    <figure class="col-12 d-flex justify-content-center m-0">
+  <section class="row mt-5 mb-4">
+    <figure class="col-12 d-flex justify-content-center m-0" style="min-height: 250px;">
       <img
-        src="img/mustang.png"
-        id="carroImagem"
+        *ngIf="veiculoSelecionado"
+        [src]="veiculoSelecionado.img"
         alt="Veículo Selecionado"
         class="img-fluid"
-        style="max-height: 250px; display: none"
+        style="max-height: 250px;"
       />
     </figure>
   </section>
@@ -71,21 +75,26 @@
               <th>Long.</th>
             </tr>
           </thead>
-          <tbody id="tabelaCorpo" class="bg-white">
+          <tbody class="bg-white">
             <tr>
               <td>
                 <input
                   type="text"
                   class="form-control form-control-sm"
-                  id="buscaVin"
                   placeholder="Ex: 2FRHDUYS2Y63NHD22454"
+                  [(ngModel)]="vinBusca"
+                  (keyup.enter)="buscarTelemetria()"
                 />
               </td>
-              <td id="tbOdo">--</td>
-              <td id="tbCombustivel">--</td>
-              <td id="tbStatus">--</td>
-              <td id="tbLat">--</td>
-              <td id="tbLong">--</td>
+              <td>{{ dadosTelemetria?.odometro || '--' }}</td>
+              <td>{{ dadosTelemetria?.nivelCombustivel ? dadosTelemetria.nivelCombustivel + '%' : '--' }}</td>
+              <td>
+                <span *ngIf="dadosTelemetria?.status === 'on'" class="badge bg-success">ON</span>
+                <span *ngIf="dadosTelemetria?.status === 'off'" class="badge bg-danger">OFF</span>
+                <span *ngIf="!dadosTelemetria?.status">--</span>
+              </td>
+              <td>{{ dadosTelemetria?.lat || '--' }}</td>
+              <td>{{ dadosTelemetria?.long || '--' }}</td>
             </tr>
           </tbody>
         </table>

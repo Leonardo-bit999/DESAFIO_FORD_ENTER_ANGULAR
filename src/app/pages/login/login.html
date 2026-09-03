@@ -1,7 +1,8 @@
 <main class="container-fluid vh-100 p-0">
   <div class="row g-0 h-100">
     <figure
-      class="col-md-7 d-none d-md-flex align-items-center justify-content-center bg-white m-0">
+      class="col-md-7 d-none d-md-flex align-items-center justify-content-center bg-white m-0"
+    >
       <img src="img/ranger.png" alt="Ford Ranger" class="img-fluid" style="max-width: 85%" />
     </figure>
 
@@ -12,7 +13,8 @@
             src="img/ford.png"
             alt="Logo Ford"
             style="width: 140px"
-            class="mb-4 d-block mx-auto"/>
+            class="mb-4 d-block mx-auto"
+          />
           <h4 class="fw-bold color-primary m-0">Boas-vindas</h4>
         </header>
 
@@ -24,8 +26,11 @@
             type="text"
             class="form-control border-start-0 ps-0"
             id="usuario"
-            placeholder="Insira seu nome de usuário"
-            required/>
+            placeholder="Insira nome de usuário"
+            [(ngModel)]="nome"
+            name="nome"
+            required
+          />
         </div>
 
         <div class="input-group mb-4">
@@ -35,12 +40,15 @@
           <input
             type="password"
             class="form-control border-start-0 ps-0"
+            [(ngModel)]="senha"
+            name="senha"
             id="senha"
             placeholder="Insira sua senha"
-            required/>
+            required
+          />
         </div>
 
-        <button type="submit" id="btnEntrar" class="btn btn-entrar w-100 fw-bold" disabled>
+        <button type="submit" id="btnEntrar" class="btn btn-entrar w-100 fw-bold" (click)="login()" [disabled]="!nome || !senha">
           Entrar
         </button>
       </form>

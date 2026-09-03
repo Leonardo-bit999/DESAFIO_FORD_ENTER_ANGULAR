@@ -4,7 +4,6 @@ import { Menu } from "../../components/menu/menu";
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
   imports: [RouterModule, Menu],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',

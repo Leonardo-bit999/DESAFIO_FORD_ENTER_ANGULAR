@@ -10,7 +10,7 @@ export class Auth {
 
   constructor(private http:HttpClient){}
 
-  fazerLogin(dadosLogin: any): Observable<any>{
-    return this.http.post(`${this.apiUrl}/login`, dadosLogin);
+  login(usuario:Pick<Usuario, 'nome'|'senha'>): Observable<Usuario>{
+    return this.http.post<Usuario>(`${this.apiUrl}/login`,usuario);
   }
 }

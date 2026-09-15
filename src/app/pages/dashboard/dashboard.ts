@@ -1,56 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule} from "@angular/router";
-import { Menu } from "../../components/menu/menu";
+import { RouterModule } from '@angular/router';
+import { Menu } from '../../components/menu/menu';
 import { CommonModule } from '@angular/common';
-import { DashboardService } from '../../services/dashboard';
 import { FormsModule } from '@angular/forms';
+import { Veiculo } from '../../models/veiculo.model';
+import { Vehicle } from '../../services/vehicle';
+import { Telemetria } from '../../models/telemetria.model';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterModule,CommonModule, FormsModule, Menu],
+  imports: [RouterModule, CommonModule, FormsModule, Menu],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-export class Dashboard implements OnInit {
-
-  veiculos: any[] = [];
-  veiculoSelecionado: any = null;
+export class Dashboard {
+  veiculos: Veiculo[] = [];
+  veiculoSelecionado: Veiculo | null = null;
 
   vinBusca: string = '';
-  dadosTelemetria: any = null;
+  dadosTelemetria: Telemetria | null = null;
+  mensagemErroVin: string | null = null;
 
-  
+  private vinDigitado = new Subject<string>();
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private vehicle: Vehicle) {}
 
   ngOnInit(): void {
-    this.dashboardService.getVehicles().subscribe({
-      next: (resposta: any) => {
-        this.veiculos = resposta.vehicles;
-      },
-      error: (erro: any) => console.error('Erro ao buscar veículos: ', erro)
+    this.vehicle.getVehicles().subscribe((veiculos) => {
+      this.veiculos = veiculos;
     });
+
+    this.vinDigitado
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        filter((vin) => vin.trim().length > 0),
+        switchMap((vin) => this.vehicle.getVehicleData(vin))
+      )
+      .subscribe({
+        next: (telemetria) => {
+          this.dadosTelemetria = telemetria;
+          this.mensagemErroVin = null;
+        },
+        error: () => {
+          this.dadosTelemetria = null;
+          this.mensagemErroVin = 'Código VIN não encontrado!';
+        },
+      });
   }
 
-  selecionarVeiculo(event: any): void {
-    const idEscolhido = event.target.value;
-    this.veiculoSelecionado = this.veiculos.find(v => v.id == idEscolhido);
+  veiculoEscolhido(event: Event): void {
+    const idSelecionado = (event.target as HTMLSelectElement).value;
+
+    if (idSelecionado) {
+      this.veiculoSelecionado = this.veiculos.find((v) => v.id == Number(idSelecionado)) || null;
+    } else {
+      this.veiculoSelecionado = null;
+    }
   }
 
-  buscarTelemetria(): void {
-    if (!this.vinBusca) return; 
-
-    this.dashboardService.getVehicleData(this.vinBusca).subscribe({
-      next: (resposta: any) => {
-        this.dadosTelemetria = resposta;
-      },
-      error: (erro: any) => {
-        console.error('Erro ao buscar VIN: ', erro);
-        alert('Código VIN não encontrado!');
-        this.dadosTelemetria = null;
-      }
-    });
+  buscarTelemetria(vin: string): void {
+    this.vinDigitado.next(vin);
   }
-
-  
 }

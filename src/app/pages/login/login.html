@@ -7,7 +7,7 @@
     </figure>
 
     <section class="col-md-5 d-flex align-items-center justify-content-center bg-light px-4">
-      <form id="loginForm" class="w-100" style="max-width: 380px">
+      <form (ngSubmit)="login()" id="loginForm" class="w-100" style="max-width: 380px">
         <header class="text-center mb-5">
           <img
             src="img/ford.png"
@@ -27,7 +27,7 @@
             class="form-control border-start-0 ps-0"
             id="usuario"
             placeholder="Insira nome de usuário"
-            [(ngModel)]="nome"
+            [(ngModel)]="usuario.nome"
             name="nome"
             required
           />
@@ -40,7 +40,7 @@
           <input
             type="password"
             class="form-control border-start-0 ps-0"
-            [(ngModel)]="senha"
+            [(ngModel)]="usuario.senha"
             name="senha"
             id="senha"
             placeholder="Insira sua senha"
@@ -48,7 +48,11 @@
           />
         </div>
 
-        <button type="submit" id="btnEntrar" class="btn btn-entrar w-100 fw-bold" (click)="login()" [disabled]="!nome || !senha">
+        <div *ngIf="mensagemErro" class="alert alert-danger py-2 small mb-3" role="alert">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          {{ mensagemErro }}
+        </div>
+        <button type="submit" id="btnEntrar" class="btn btn-entrar w-100 fw-bold" [disabled]="!usuario.nome || !usuario.senha">
           Entrar
         </button>
       </form>

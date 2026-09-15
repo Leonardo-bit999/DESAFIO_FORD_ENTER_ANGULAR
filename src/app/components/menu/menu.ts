@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-menu',
@@ -8,10 +9,12 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './menu.css',
 })
 export class Menu {
-  constructor (private router: Router){}
-  
-  sair(){
-    localStorage.removeItem('usuarioLogado');
-    this.router.navigate(['/login']);
+  constructor(private auth: Auth) {}
+
+  sair() {
+    const confirmar = confirm('Deseja realmente sair?');
+    if (confirmar) {
+      this.auth.logout();
+    }
   }
 }

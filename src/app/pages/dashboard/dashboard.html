@@ -86,10 +86,8 @@
               </td>
               <td>{{ dadosTelemetria?.odometro || '--' }}</td>
               <td>
-                {{
-                  dadosTelemetria?.nivelCombustivel ? dadosTelemetria.nivelCombustivel + '%' : '--'
-                }}
-              </td>
+  {{ dadosTelemetria ? dadosTelemetria.nivelCombustivel + '%' : '--' }}
+</td>
               <td>
                 <span *ngIf="dadosTelemetria?.status === 'on'" class="badge bg-success">ON</span>
                 <span *ngIf="dadosTelemetria?.status === 'off'" class="badge bg-danger">OFF</span>

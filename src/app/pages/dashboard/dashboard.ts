@@ -6,8 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Veiculo } from '../../models/veiculo.model';
 import { Vehicle } from '../../services/vehicle';
 import { Telemetria } from '../../models/telemetria.model';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',

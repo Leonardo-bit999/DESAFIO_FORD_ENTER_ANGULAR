@@ -1,18 +1,53 @@
 .home {
     background-image: url('/img/ranger.png');
-    background-size: 100%;
-    background-position: center;
+    background-size: contain;
+    background-position: center center;
     background-repeat: no-repeat;
+    background-color: #f8f9fa;
     height: 100vh;
     overflow: hidden;
 }
 
+.home-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .welcome-card {
     width: 100%;
-    max-width: 450px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
+    max-width: 520px;
+    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.88);
+    border: none;
+    border-top: 5px solid #003478;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.card-header-ford {
+    text-align: center;
+    padding: 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #00A699;
+    border-bottom: 1px solid rgba(0, 166, 153, 0.25);
+    letter-spacing: 1.2px;
+}
+
+.card-body-ford {
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.welcome-title {
+    color: #003478;
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .menu-item {

@@ -1,5 +1,11 @@
-.table-ford {
-    background-color: #003478 !important;
+.table-ford th {
+    background-color: white !important;
+    color: #003478 !important;
+    border-bottom: 2px solid #00A699 !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-top: none !important;
 }
 
 .data-value {
@@ -7,17 +13,88 @@
     font-weight: bold;
 }
 
-.text-primary {
+.title-ford {
     color: #003478 !important;
 }
 
 .card-header {
-    font-weight: 500;
-    border-bottom: 1px solid #eaeaea;
+    font-weight: 700;
+    border-bottom: 2px solid #00A699;
+    color: #003478;
+}
+
+.linha-destaque {
+    background-color: rgba(0, 166, 153, 0.05) !important;
+}
+
+.input-vin {
+    border: 1px solid #00A699;
+    color: #003478;
+    font-weight: bold;
+}
+
+.input-vin:focus {
+    box-shadow: 0 0 5px rgba(0, 166, 153, 0.5);
+    border-color: #00A699;
+    outline: none;
 }
 
 .active-menu {
     background-color: #e2e6ea !important;
     color: #000 !important;
     border-left: 4px solid #00A699;
+}
+
+.container-img-veiculo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+}
+
+.img-veiculo {
+    max-height: 250px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.label-unidade {
+    font-size: 0.7rem;
+}
+
+.tabela-sem-borda {
+    border-style: hidden;
+}
+
+.input-busca-vin {
+    min-width: 220px;
+}
+
+.badge-on {
+    background-color: #00A699;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container-img-veiculo {
+        min-height: 180px;
+    }
+
+    .img-veiculo {
+        max-height: 180px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

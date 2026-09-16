@@ -1,3 +1,33 @@
+.login-image-container {
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.login-ranger-img {
+    width: 90%;
+    max-width: 650px;
+    height: auto;
+    object-fit: contain;
+}
+
+.login-form-container {
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-box {
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-logo {
+    width: 140px;
+    display: block;
+    margin: 0 auto;
+}
+
 .color-primary {
     color: #00A699;
 }
@@ -27,7 +57,7 @@
     border: none;
 }
 
-.btn-entrar:hover:not(:disabled){
+.btn-entrar:hover:not(:disabled) {
     background-color: #008f85;
     color: white;
 }

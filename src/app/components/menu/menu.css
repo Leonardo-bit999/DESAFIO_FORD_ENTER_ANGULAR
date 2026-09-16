@@ -1,14 +1,76 @@
-.menu{
-    background-color: #00A699;
+/* --- Barra Superior (Header) --- */
+.menu-topbar {
+    background-color: #ffffff;
+    border-bottom: 2px solid rgba(0, 166, 153, 0.2) !important;
 }
+
+.btn-menu-icon {
+    color: #00A699;
+    /* Turquesa Ford no ícone de abrir o menu */
+    transition: color 0.3s ease;
+}
+
+.btn-menu-icon:hover {
+    color: #003478;
+    /* Azul Ford ao passar o mouse */
+}
+
+/* --- Menu Lateral (Offcanvas) --- */
+.menu-lateral-container {
+    width: 250px !important;
+    /* Aumentei de 200 para 250 para respirar melhor */
+}
+
+.menu-logo {
+    width: 130px;
+    object-fit: contain;
+}
+
+/* --- Itens do Menu (Home, Dashboard) --- */
 .menu-item {
-    padding: 15px 20px;
-    color: #555;
-    font-weight: 500;
+    padding: 16px 20px;
+    color: #495057;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Espaço entre o ícone e o texto */
+}
+
+.menu-item:hover {
+    background-color: #f8f9fa;
+    color: #003478;
+    padding-left: 26px;
+    /* Efeito moderno deslizando levemente para a direita */
 }
 
 .active-menu {
-    background-color: #e2e6ea !important;
-    color: #000 !important;
-    border-left: 4px solid #00A699;
+    background-color: rgba(0, 166, 153, 0.08) !important;
+    /* Fundo Turquesa bem transparente */
+    color: #003478 !important;
+    /* Texto Azul Ford */
+    border-left: 4px solid #00A699 !important;
+    font-weight: 700;
+}
+
+/* --- Botão Sair --- */
+.btn-sair {
+    padding: 18px 20px;
+    color: #dc3545;
+    font-weight: 600;
+    border: none;
+    border-top: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-sair:hover {
+    background-color: #fff5f5;
+    color: #b02a37;
+    padding-left: 26px;
 }
